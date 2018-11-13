@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include <vector>
+
 class PID {
 public:
   /*
@@ -41,6 +43,9 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+  
+  /* update params for Twiddle */
+  double UpdateParams(const std::vector<double> &p);
 };
 
 #endif /* PID_H */

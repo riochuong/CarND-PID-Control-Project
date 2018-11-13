@@ -25,6 +25,13 @@ void PID::UpdateError(double cte) {
 }
 
 double PID::TotalError() {
-    return p_error + i_error + d_error;
+    return (-Kp * p_error - Kd * d_error - Ki * i_error);
+}
+
+double PID::UpdateParams(const vector<double> &p) {
+    this->Kp = p[0];
+    this->Kd = p[1];
+    this->Ki = p[2];
+    return this->TotalError();
 }
 
